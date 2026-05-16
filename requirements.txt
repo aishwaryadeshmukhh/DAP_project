@@ -9,3 +9,5 @@ plotly
 langchain-groq
 duckduckgo-search
 google-search-results
+pysqlite3-binary
+protobuf==4.25.3
