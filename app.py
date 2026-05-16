@@ -1,3 +1,12 @@
+import sys
+import types
+
+# Python 3.14 Compatibility Hack
+if 'imghdr' not in sys.modules:
+    m = types.ModuleType('imghdr')
+    m.what = lambda x, y=None: None
+    sys.modules['imghdr'] = m
+
 __import__('pysqlite3')
 import sys
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
