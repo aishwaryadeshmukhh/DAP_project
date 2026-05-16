@@ -9,4 +9,3 @@ plotly
 duckduckgo-search
 google-search-results
 pysqlite3-binary
-protobuf~=3.19.0
