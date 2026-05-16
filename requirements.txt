@@ -1,6 +1,6 @@
 langgraph
 groq
-streamlit
+streamlit>=1.31.0
 chromadb
 httpx
 pandas
