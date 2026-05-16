@@ -119,7 +119,7 @@ with st.sidebar:
     if st.session_state.last_result:
         out = st.session_state.last_result.get("final_output", {})
         if not out.get("cached"):
-            if st.button("Sync to Local Memory", width="stretch", type="primary"):
+            if st.button("Sync to Local Memory", use_container_width=True, type="primary"):
                 from services.knowledge_base import kb
                 kb.upsert_city(
                     out.get("city"), 
@@ -141,7 +141,7 @@ c_in, c_bt = st.columns([5, 1])
 with c_in:
     u_input = st.text_input("ANALYSIS_PARAMETER", placeholder="Identify destination for synthesis...", label_visibility="collapsed")
 with c_bt:
-    if st.button("Generate Report", width="stretch"):
+    if st.button("Generate Report", use_container_width=True):
         if u_input:
             with st.spinner("Executing agent flow..."):
                 start_time = time.time()
@@ -203,7 +203,7 @@ if st.session_state.last_result:
                 fig = px.line(df_w, x='date', y='temp', markers=True, color_discrete_sequence=['#0c1c3d'])
                 fig.update_traces(line_shape='spline', line_width=3, marker=dict(size=8))
                 fig.update_layout(template="plotly_white", font_family="Inter", margin=dict(l=0, r=0, t=40, b=0), height=400, xaxis_title="", yaxis_title="TEMPERATURE (°C)", plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
-                st.plotly_chart(fig, width="stretch")
+                st.plotly_chart(fig, use_container_width=True)
                 
                 st.markdown("<br>", unsafe_allow_html=True)
                 c_p1, c_p2 = st.columns(2)
@@ -217,14 +217,14 @@ if st.session_state.last_result:
                         st.markdown("<p style='color: #2563eb; border-left: 3px solid #2563eb; padding-left: 15px;'><b>Optimal Thermal Profile:</b> Standard seasonal attire is sufficient for this period.</p>", unsafe_allow_html=True)
                 with c_p2:
                     st.markdown("<h4 style='color: #0c1c3d;'>Data Matrix</h4>", unsafe_allow_html=True)
-                    st.dataframe(df_w[['date', 'temp', 'humidity']], width="stretch")
+                    st.dataframe(df_w[['date', 'temp', 'humidity']], use_container_width=True)
 
         with t3:
             st.markdown("<h3 style='color: #0c1c3d;'>Visual Intelligence</h3>", unsafe_allow_html=True)
             imgs = out.get('images', [])
             cols = st.columns(3)
             for i, u in enumerate(imgs[:9]):
-                with cols[i % 3]: st.image(u, width="stretch")
+                with cols[i % 3]: st.image(u, use_container_width=True)
 
         with t4:
             st.markdown("### Orchestration Efficiency Analysis", unsafe_allow_html=True)
@@ -236,7 +236,7 @@ if st.session_state.last_result:
                 categories = ['Latency', 'Confidence', 'Freshness', 'Routing', 'Sync']
                 fig_r = go.Figure(data=go.Scatterpolar(r=[0.92, 0.98, 1.0, 0.95, 0.97], theta=categories, fill='toself', line_color='#0c1c3d', fillcolor='rgba(12, 28, 61, 0.2)'))
                 fig_r.update_layout(polar=dict(radialaxis=dict(visible=True, range=[0, 1])), showlegend=False, height=400, margin=dict(l=40, r=40, t=20, b=20))
-                st.plotly_chart(fig_r, width="stretch")
+                st.plotly_chart(fig_r, use_container_width=True)
                 st.markdown("<div style='font-size: 0.75rem; color: #64748b; border-top: 1px solid #f1f5f9; padding-top: 10px;'><b>GLOSSARY:</b> Freshness: Data age | Routing: Accuracy of KB vs Web | Sync: Multi-modal merge.</div>", unsafe_allow_html=True)
             
             with c_g2:
