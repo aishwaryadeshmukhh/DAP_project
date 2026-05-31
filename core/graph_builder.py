@@ -130,7 +130,7 @@ async def aggregate_node(state: AgentState) -> AgentState:
         "coords": state["coordinates"],
         "latency": state["latency_breakdown"],
         "cached": state["is_in_vector_store"],
-        "confidence": state["data_quality"].get("confidence", 0.98)
+        "confidence": state["data_quality"].get("confidence", 0.70)
     }
     return state
 
